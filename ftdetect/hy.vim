@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.hy set filetype=hy
+au BufRead,BufNewFile *.hy set filetype=jhy

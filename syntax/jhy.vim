@@ -54,11 +54,11 @@ syn match Int "\d\+"
 syn keyword Builtins assert assoc do doto doc #doc dfor lfor sfor setv setx eval\-and\-complie eval\-when\-conpile
 syn keyword Builtins get first last cut gensym of py pys import require quote quasiquoto rest unquote with with\/a 
 syn keyword Builtins unquote\-splice with\-decorator with\-gensyms print input lif lif\-not self cls
-syn match Builtins "--\S*--"
-syn match Builtins "__\S*__"
-syn match Special "#\.\*\?"
-syn keyword Special ` ~ ~@ ' ^ . -> --> as--> #@ #* #** #_
-syn keyword Maths + = - * / // % < > <= >= != =
+syn match Builtins "[-_][-_]\S*[-_][-_]"
+"syn match Builtins "__\S*__"
+syn match Special "^#[^\s\(\)]*"
+syn keyword Special ` ~ ~@ ' ^ . -> --> as-->
+syn match Maths "[=+!<>*/%|^&][=/]*"
 syn match Explain ";.*$"
 syn keyword Def defn defclass defn\/a defmacro defmacro\/g! defmacro! deftag fn fn/a
 syn match Error "[^\s\(\)]*Error"
