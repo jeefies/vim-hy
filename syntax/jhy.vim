@@ -46,25 +46,35 @@ hi LSDT 	term=bold ctermfg=111 ctermbg=93
 
 
 syn keyword Conditions if if* if-not del when return while with with\/a and or xor await break pass continue cond cmo
-syn keyword Conditions unless nonlacol comment for yield yield-from global not raise
-syn keyword Boolean True False
+syn keyword Conditions unless nonlacol comment for yield yield-from global not raise try except else in not-in
+syn keyword Boolean True False None
 syn keyword Param ( )
 syn region String start="\"" end="\""
-syn match Int "\d\+"
+syn match Int "\d+\.*\d*"
 syn keyword Builtins assert assoc do doto doc #doc dfor lfor sfor setv setx eval\-and\-complie eval\-when\-conpile
 syn keyword Builtins get first last cut gensym of py pys import require quote quasiquoto rest unquote with with\/a 
 syn keyword Builtins unquote\-splice with\-decorator with\-gensyms print input lif lif\-not self cls
+syn keyword Builtins int float str list tuple hex oct bin chr ord set dict isinstance gfor
 syn match Builtins "[-_][-_]\S*[-_][-_]"
 "syn match Builtins "__\S*__"
 syn match Special "^#[^\s\(\)]*"
 syn keyword Special ` ~ ~@ ' ^ . -> --> as-->
-syn match Maths "[=+!<>*/%|^&][=/]*"
+syn match Maths "[=+!<>*/%|^&][=/]*\s"
 syn match Explain ";.*$"
-syn keyword Def defn defclass defn\/a defmacro defmacro\/g! defmacro! deftag fn fn/a
+syn keyword Def defn defclass defn\/a defmacro defmacro\/g! defmacro! deftag fn fn/a defmain
 syn match Error "[^\s\(\)]*Error"
 syn keyword Error Exception
 syn match Arg ":\S*"
 syn match Arg "&\S*"
 "syn keyword LSDT \[ \] (, ) { } #{
+
+set history=1000
+set clipboard+=unnamed
+filetype on
+
+map <F5> :call CompileRunHy()<CR>
+func! CompileRunHy()
+exec "!hy %<.hy"
+endfunc
 
 let b:current_syntax = "Hycl"
